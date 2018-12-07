@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const Weather = () => {
+const Weather = ({ weather, temperature }) => {
     return (
         <View style={styles.weatherContainer}>
             <View style={styles.headerContainer}>
@@ -11,17 +11,17 @@ const Weather = () => {
                     name="weather-sunny" 
                     color={'#fff'} 
                 />
-                <Text style={styles.tempText}>Temperature˚</Text>
+                <Text style={styles.tempText}>{temperature}˚</Text>
             </View>
             <View style={styles.bodyContainer}>
-                <Text style={styles.title}>Sunny</Text>
+                <Text style={styles.title}>{weather}</Text>
                 <Text style={styles.subtitle}>It burns!</Text>
             </View>
         </View>
     );
 };
 
-const styles = StyleSheet({
+const styles = StyleSheet.create({
     weatherContainer: {
         flex: 1,
         backgroundColor: '#f7b733'
@@ -49,7 +49,7 @@ const styles = StyleSheet({
     subtitle: {
         fontSize: 24,
         color: '#fff'
-    }
+    },
 });
 
 export default Weather;
