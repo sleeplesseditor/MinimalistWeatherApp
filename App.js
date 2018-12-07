@@ -43,9 +43,15 @@ export default class App extends React.Component {
   render() {
     const { isLoading, weatherCondition, temperature  } = this.state;
     return (
-        <View style={styles.container}>
-          {isLoading ? <Text>Fetching the Weather</Text> : <Weather  weather={weatherCondition} temperature={temperature}/>}
+      <View style={styles.container}>
+      {isLoading ? (
+        <View style={styles.loadingContainer}>
+          <Text style={styles.loadingText}>Fetching The Weather</Text>
         </View>
+      ) : (
+        <Weather weather={weatherCondition} temperature={temperature} />
+      )}
+    </View>
     );
   }
 }
@@ -53,6 +59,15 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    // backgroundColor: '#000'
   },
+  loadingContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFFDE4'
+  },
+  loadingText: {
+    fontSize: 30
+  }
 });
